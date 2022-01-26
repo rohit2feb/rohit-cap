@@ -22,6 +22,16 @@ steps:
   artifactPrepareVersion:
     versioningType: cloud_noTag
 
+  npmExecuteLint:
+    failOnError: true
+
+  cloudFoundryDeploy:
+    mtaDeployParameters: "-f --version-rule ALL"
+
+  tmsUpload:
+    nodeName: "QA"
+    credentialsId: "tms-sk"
+
 ### Stage-specific configuration
 stages:
   'Confirm':
@@ -32,11 +42,14 @@ stages:
 #      - alias: 'mySystemAlias'
 #        credentialId: 'mySystemCredentialsId'
 
-#  Release:
-#    cfTargets:
-#      - org: 'myOrg'
-#        space: 'mySpace'
-#        apiEndpoint: 'https://'
-#        appName: 'myAppName'
-#        manifest: 'manifest.yml'
-#        credentialsId: 'myDeploymentCredentialsId'
+Release:
+    cloudFoundryDeploy: true
+    cfApiEndpoint: "https://api.cf.us10.hana.ondemand.com"
+    cfOrg: "633b1128trial"
+    cfSpace: "dev"
+    cfAppName: "rohit"
+    cfCredentialsId: "deploy-to-cf"
+    tmsUpload: true
+
+
+  
