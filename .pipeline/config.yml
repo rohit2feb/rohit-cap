@@ -15,7 +15,7 @@ stages:
     cfApiEndpoint: "https://api.cf.us10.hana.ondemand.com"
     cfOrg: "633b1128trial"
     cfSpace: "dev"
-    cfAppName: "rohit"
+    cfAppName: "rohit-cap"
     cfCredentialsId: "deploy-to-cf"
     tmsUpload: true
 
