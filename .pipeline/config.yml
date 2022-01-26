@@ -1,31 +1,21 @@
 ---
-general:
-  buildTool: "mta"
+
+### General project setup
+
+  inferBuildTool: true
+
 
 stages:
   Build:
     mavenExecuteStaticCodeChecks: false
     npmExecuteLint: true
 
-  Additional Unit Tests:
-    npmExecuteScripts: false
-    karmaExecuteTests: false
-
-  Acceptance:
-    cloudFoundryDeploy: false
-    cfApiEndpoint: "https://api.cf.us10.hana.ondemand.com"
-    cfOrg: "633b1128trial"
-    cfSpace: "dev"
-    cfAppName: "rohit-cap"
-    cfCredentialsId: "deploy-to-cf"
-    uiVeri5ExecuteTests: false
-
   Release:
     cloudFoundryDeploy: true
     cfApiEndpoint: "https://api.cf.us10.hana.ondemand.com"
     cfOrg: "633b1128trial"
     cfSpace: "dev"
-    cfAppName: "rohit-cap"
+    cfAppName: "rohit"
     cfCredentialsId: "deploy-to-cf"
     tmsUpload: true
 
@@ -42,3 +32,6 @@ steps:
   tmsUpload:
     nodeName: "QA"
     credentialsId: "tms-sk"
+
+mavenExecute:
+    dockerImage: devxci/mbtci:1.0.14
